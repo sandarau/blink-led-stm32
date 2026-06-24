@@ -1,0 +1,8 @@
+[target.thumbv7m-none-eabi]
+# This tells the compiler how to stitch the code into the memory map
+rustflags = [
+  "-C", "link-arg=-Tlink.x",
+]
+
+[build]
+target = "thumbv7m-none-eabi"

@@ -1,0 +1,15 @@
+[package]
+name = "blink-led-hw267"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+nb = "1.0"
+cortex-m = "0.7.6"
+cortex-m-rt = "0.7.0"
+panic-halt = "0.2.0"
+stm32f1xx-hal = {version = "0.10.0", features = ["stm32f103", "rt"] }
+
+[profile.release]
+panic = "abort"
+
