@@ -1,4 +1,4 @@
-Bare-metal STM32F103C8Tx blink project for PA0.
+Bare-metal STM32F103C8Tx blink project for Pc13.
 Build requirements
 Install either STM32CubeIDE or GNU Arm Embedded Toolchain, and make sure these commands are on PATH:
 make
