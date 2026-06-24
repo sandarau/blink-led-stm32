@@ -1,10 +1,20 @@
 # Creating a blinking-led project with hw267 "blue-pill" mcu, using Rust programming language and flashing with USB-UART in wsl
+Build requirements:
+
+VS code
+GNU Arm Embedded Toolchain, make sure these commands are on PATH:
+
+make
+arm-none-eabi-gcc
+arm-none-eabi-objcopy
+arm-none-eabi-size
 
 The specific board I have is **stm32f103c8t6** medium density. 
 Check online AN2606 datasheet (pg 116) for bootloader configs
 USART:
 pa9 tx Used in alternate push-pull, pull-up mode.
 pa10 rx used in input, no pull mode
+Note that Usb rx goes to board's tx etc. Power the board with the usb's 3.3V or via an external source eg your pc, or a powerbank. If powering with usb, they have to share a common ground.
 
 Check also on youtube, there's different tutorials depending on how you want your code to look like. I got a helpful tutorial from https://youtu.be/gTiKnWqJoHo?si=LlAP9isMe7PNud69
 
@@ -13,6 +23,12 @@ Ensure your project has a memory.x file. It will help in creating the hex file.
 Once complete, insert your usb-uart and open powershell as admin. confirm that its in the list, and share and then attach it to wsl. Note that disconnecting the usb will detach from wsl unless you run some commands to ensure that it reattaches immediately.
 
 Install stm32flash from their website. Open it in terminal, and run the "make" command. If it has errors, check if a Makefile exists and if not, create one.
+
+make outputs are written to build/:
+build/blink-led-hw267.elf
+build/blink-led-hw267.hex
+build/blink-led-hw267.bin
+build/blink-led-hw267.map
 
 While in boot mode, click the reset button once and build your project with cargo build --release. Ensure your config.toml has "target thumbv7m-none-eabi" so that you dont have to type the full command all the time. Confirm that your bin size is not zero with the command: ls -lh target/thumbv7m-none-eabi/release/blink-led-hw267.hex
 
