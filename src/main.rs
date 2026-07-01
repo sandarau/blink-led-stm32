@@ -9,7 +9,7 @@ use stm32f1xx_hal::{
     prelude::*,//import commonly used traits and types eg _embedded_hal traits, extention traits for gpio and rcc, digital io traits etc
 };
 
-const DELAY_MS: u32 = 700;
+const DELAY_MS: u32 = 7000;
 #[entry]
 fn main() -> ! {//fn never returns
     let dp = pac::Peripherals::take().unwrap();//take ownership of the device peripherals. returns an option, so we unwrap it to get the peripherals. if we try to take the peripherals again, it will return None, preventing multiple ownership and ensuring safe access to hardware resources.
